@@ -3,6 +3,7 @@
     "name": "CopywareIG",
     "description": "Download any Instagram videos from your google browser with no effort.",
     "version": "1.0",
+
     "icons": {
         "16":"/images/16px.png",
         "48": "/images/48px.png",
@@ -10,11 +11,12 @@
     },
 
     "permissions": [
-        "https://www.instagram.com/*"
+        "https://www.instagram.com/*",
+        "nativeMessaging"
     ],
 
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["/scripts/background.js"],
         "persistent": false
     },
 
@@ -30,6 +32,20 @@
 
     "content-scripts": [{
         "matches": ["https://www.instagram.com/*"],
-        "js": ["content.js"]
-    }]
+        "js": ["/scripts/content.js"]
+    }],
+
+    "nameNatMes": "com.example.myapp",
+    "descriptionNatMes": "Native Messaging Host for My Chrome Extension",
+    "path": "/path/to/your/native/messaging/host/executable",
+    "type": "stdio",
+    "allowed_origins": [
+      "chrome-extension://your_extension_id/"
+    ],
+    
+    "externally_connectable": {
+      "ids": ["com.example.myapp"],
+      "matches": ["<all_urls>"]
+    }
+
 }
