@@ -1,19 +1,35 @@
 {
     "manifest_version": 2,
-    "name": "copyware ig",
+    "name": "CopywareIG",
     "description": "Download any Instagram videos from your google browser with no effort.",
     "version": "1.0",
     "icons": {
-        "16":"/images/128px.png",
-        "48": "/images/128px.png",
+        "16":"/images/16px.png",
+        "48": "/images/48px.png",
         "128": "/images/128px.png"
     },
+
+    "permissions": [
+        "https://www.instagram.com/*"
+    ],
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
     "page-action": {
         "default-icon": {
-            "16": "/images/128px.png",
-            "48": "/images/128px.png", 
+            "16": "/images/16px.png",
+            "48": "/images/48px.png", 
             "128": "/images/128px.png"
-        }
+        },
+
+        "default_popup": "popup.html"
     },
-    "content-scripts": [{}]
+
+    "content-scripts": [{
+        "matches": ["https://www.instagram.com/*"],
+        "js": ["content.js"]
+    }]
 }
